@@ -1,0 +1,22 @@
+# 设置Elasticsearch节点的发现类型为单节点
+discovery.type: "single-node"
+# 尝试锁定内存，以防止被交换到磁盘
+bootstrap.memory_lock: true
+# Elasticsearch在所有可用网络接口上侦听，可以从任何地址访问
+network.host: 0.0.0.0
+# Elasticsearch HTTP API的监听端口
+http.port: 9200
+# Elasticsearch节点之间通信的TCP端口
+transport.tcp.port: 9300
+# Elasticsearch日志文件的输出路径
+path.logs: /usr/share/elasticsearch/logs
+# 启用跨域资源共享（CORS）支持
+http.cors.enabled: true
+# 允许来自任何源的跨域请求
+http.cors.allow-origin: "*"
+# 启用Elasticsearch安全性功能
+xpack.security.enabled: true
+# 允许包含 Authorization 头的跨域请求
+http.cors.allow-headers: Authorization
+# 启用节点之间传输层安全性（TLS/SSL）
+xpack.security.transport.ssl.enabled: true

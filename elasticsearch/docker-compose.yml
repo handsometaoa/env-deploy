@@ -1,0 +1,22 @@
+version: '3.3'
+networks:
+  es:
+services:
+  elasticsearch:
+    image: elasticsearch:7.13.3
+    container_name: elasticsearch
+    privileged: true
+    environment:
+      TZ: Asia/Shanghai
+      LANG: en_US.UTF-8
+      cluster.name: elasticsearch # 设置集群名称为elasticsearch
+      ES_JAVA_OPTS: "-Xms256m -Xmx256m" # 设置使用 JVM 内存大小
+    volumes:
+      - "./data:/usr/share/elasticsearch/data:rw"
+      - "./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
+      - "./logs:/usr/share/elasticsearch/logs:rw"
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - es
